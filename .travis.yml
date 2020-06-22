@@ -1,0 +1,6 @@
+language: minimal
+
+script:
+  - mkdir -p pages
+  - cp -v robots.txt pages/
+  - bash minify.sh
