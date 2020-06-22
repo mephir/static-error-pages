@@ -4,3 +4,18 @@ script:
   - mkdir -p pages
   - cp -v robots.txt pages/
   - bash minify.sh
+  
+before_deploy:
+  - tar cJf pages.tar.xz pages
+
+deploy:
+  provider: releases
+  api_key: "GITHUB OAUTH TOKEN"
+  file: pages.tar.xz
+  skip_cleanup: true
+  on:
+    tags: true
+
+branches:
+  except:
+  - master
